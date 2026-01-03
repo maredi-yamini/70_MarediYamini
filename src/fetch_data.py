@@ -1,7 +1,7 @@
 import requests
 
-def fetch_drug_labels():
-    url = "https://api.fda.gov/drug/label.json?limit=5"
+def fetch_drug_labels(limit=5):
+    url = f"https://api.fda.gov/drug/label.json?limit={limit}"
     response = requests.get(url)
     data = response.json()
     return data.get("results", [])
