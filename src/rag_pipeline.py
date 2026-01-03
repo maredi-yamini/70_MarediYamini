@@ -1,4 +1,4 @@
-from fetch_data import fetch_drug_labels
+from src.fetch_data import fetch_drug_labels
 
 def answer_question(question):
     records = fetch_drug_labels()
