@@ -9,17 +9,15 @@ def answer_question(question, medicine_name=None):
     selected_drug = None
 
     if medicine_name:
-        for drug in records:
-            openfda = drug.get("openfda", {})
-            brand_names = openfda.get("brand_name", [])
-            generic_names = openfda.get("generic_name", [])
+    for drug in records:
+        text = " ".join(
+            drug.get("indications_and_usage", []) +
+            drug.get("description", [])
+        ).lower()
 
-            all_names = [name.lower() for name in brand_names + generic_names]
-
-            for name in all_names:
-              if medicine_name.lower() in name:
-                 selected_drug = drug
-                 break
+        if medicine_name.lower() in text:
+            selected_drug = drug
+            break
 
     if not selected_drug:
         selected_drug = records[0]  # fallback
