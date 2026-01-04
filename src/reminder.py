@@ -1,10 +1,9 @@
-def generate_reminder(medicine_name, times_per_day):
+def generate_reminder(medicine_name):
     """
     Generate a simple medication reminder plan.
     """
-    reminder = {
+    return {
         "medicine": medicine_name,
-        "times_per_day": times_per_day,
-        "message": "Please take your medicine as prescribed."
+        "schedule": ["Morning", "Night"],
+        "message": f"Please take {medicine_name} as prescribed."
     }
-    return reminder
