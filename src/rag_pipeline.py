@@ -1,7 +1,7 @@
 from src.fetch_data import fetch_drug_labels
 
 def answer_question(question, medicine_name=None):
-    records = fetch_drug_labels(limit=10)
+    records = fetch_drug_labels(limit=50)
 
     if not records:
         return "No drug information available."
@@ -16,9 +16,10 @@ def answer_question(question, medicine_name=None):
 
             all_names = [name.lower() for name in brand_names + generic_names]
 
-            if medicine_name.lower() in all_names:
-                selected_drug = drug
-                break
+            for name in all_names:
+              if medicine_name.lower() in name:
+                 selected_drug = drug
+                 break
 
     if not selected_drug:
         selected_drug = records[0]  # fallback
