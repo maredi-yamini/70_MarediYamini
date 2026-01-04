@@ -9,7 +9,7 @@ def answer_question(question, medicine_name=None):
     selected_drug = None
 
     if medicine_name:
-    for drug in records:
+     for drug in records:
         text = " ".join(
             drug.get("indications_and_usage", []) +
             drug.get("description", [])
